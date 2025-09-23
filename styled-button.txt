@@ -1,0 +1,23 @@
+<!-- HTML -->
+<button id="myBtn">Click Me!</button>
+
+<!-- CSS -->
+#myBtn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #60a5fa;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(96,165,250,0.3);
+}
+#myBtn:hover {
+  background: #22c55e;
+}
+
+<!-- JS -->
+document.getElementById('myBtn').addEventListener('click', () => {
+  alert('You clicked the button!');
+});
