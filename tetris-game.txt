@@ -1,0 +1,165 @@
+<!-- Responsive Tetris Game Example -->
+
+<!-- HTML -->
+<div class="tetris">
+  <canvas id="tetris-canvas" width="240" height="400"></canvas>
+  <div class="controls">
+    <button id="startBtn">Start</button>
+    <span id="score">Score: 0</span>
+  </div>
+</div>
+
+<!-- CSS -->
+<style>
+body { margin:0; font-family: 'Segoe UI', Arial, sans-serif; background:#181d32; color:#fff; }
+.tetris { display:flex; flex-direction:column; align-items:center; margin-top:30px;}
+canvas { background:#222; border-radius:10px; box-shadow:0 4px 16px rgba(96,165,250,.12);}
+.controls { display:flex; gap:1.2rem; align-items:center; margin-top:1rem;}
+#startBtn { padding:0.7rem 2rem; background:#22c55e; color:#fff; border:none; border-radius:10px; font-weight:bold;}
+#score { font-size:1.2rem;}
+@media (max-width:600px) {
+  .tetris { margin-top:10px;}
+  canvas { width:180px !important; height:320px !important;}
+}
+</style>
+
+<!-- JS -->
+<script>
+// Tetris constants
+const canvas = document.getElementById('tetris-canvas');
+const ctx = canvas.getContext('2d');
+const COLS = 10, ROWS = 20, BLOCK_SIZE = 24;
+let board, current, score = 0, gameOver = false, interval;
+
+// Tetromino shapes
+const TETROMINOS = [
+  [[1,1,1,1]], // I
+  [[1,1,1],[0,1,0]], // T
+  [[1,1],[1,1]], // O
+  [[0,1,1],[1,1,0]], // S
+  [[1,1,0],[0,1,1]], // Z
+  [[1,0,0],[1,1,1]], // J
+  [[0,0,1],[1,1,1]]  // L
+];
+const COLORS = ["#60a5fa","#eab308","#ef4444","#34d399","#f59e0b","#a78bfa","#22c55e"];
+
+// Board reset
+function resetBoard() {
+  board = Array.from({length: ROWS}, () => Array(COLS).fill(0));
+  score = 0; gameOver = false;
+  document.getElementById('score').textContent = "Score: " + score;
+}
+
+// Draw board & tetromino
+function draw() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  for(let y=0; y<ROWS; y++)
+    for(let x=0; x<COLS; x++)
+      if(board[y][x]) drawBlock(x, y, COLORS[board[y][x]-1]);
+  if(current) {
+    current.shape.forEach((row,i)=>
+      row.forEach((v,j)=>{ if(v) drawBlock(current.x+j, current.y+i, COLORS[current.color]); })
+    );
+  }
+}
+function drawBlock(x, y, color) {
+  ctx.fillStyle = color;
+  ctx.fillRect(x*BLOCK_SIZE, y*BLOCK_SIZE, BLOCK_SIZE-2, BLOCK_SIZE-2);
+  ctx.strokeStyle = "#fff";
+  ctx.strokeRect(x*BLOCK_SIZE, y*BLOCK_SIZE, BLOCK_SIZE-2, BLOCK_SIZE-2);
+}
+
+// Tetromino generator
+function newTetromino() {
+  const type = Math.floor(Math.random()*TETROMINOS.length);
+  return {
+    shape: TETROMINOS[type].map(r=>[...r]),
+    x: Math.floor(COLS/2)-1,
+    y: 0,
+    color: type
+  };
+}
+
+// Collision
+function collide(shape, x, y) {
+  return shape.some((row,i)=>
+    row.some((v,j)=> v &&
+      (y+i>=ROWS || x+j<0 || x+j>=COLS || board[y+i][x+j])
+    )
+  );
+}
+
+// Merge tetromino
+function merge() {
+  current.shape.forEach((row,i)=>
+    row.forEach((v,j)=>{ if(v) board[current.y+i][current.x+j]=current.color+1; })
+  );
+}
+
+// Clear lines
+function clearLines() {
+  let lines = 0;
+  for(let y=ROWS-1;y>=0;y--) {
+    if(board[y].every(x=>x)) {
+      board.splice(y,1);
+      board.unshift(Array(COLS).fill(0));
+      lines++; y++;
+    }
+  }
+  if(lines) score += lines*100;
+  document.getElementById('score').textContent = "Score: " + score;
+}
+
+// Move
+function move(dx, dy) {
+  if(!current) return;
+  const nx = current.x+dx, ny = current.y+dy;
+  if(!collide(current.shape, nx, ny)) {
+    current.x = nx; current.y = ny;
+    draw();
+    return true;
+  }
+  return false;
+}
+
+// Rotate
+function rotate() {
+  if(!current) return;
+  const s = current.shape.map((_,i)=>current.shape.map(r=>r[i])).reverse();
+  if(!collide(s, current.x, current.y)) {
+    current.shape = s;
+    draw();
+  }
+}
+
+// Tick
+function tick() {
+  if(!move(0,1)) {
+    merge(); clearLines();
+    current = newTetromino();
+    if(collide(current.shape, current.x, current.y)) {
+      gameOver = true; clearInterval(interval);
+      alert('Game Over! Your score: '+score);
+    }
+  }
+  draw();
+}
+
+// Keyboard controls
+document.addEventListener('keydown', e => {
+  if(gameOver) return;
+  if(e.key==='ArrowLeft') move(-1,0);
+  if(e.key==='ArrowRight') move(1,0);
+  if(e.key==='ArrowDown') move(0,1);
+  if(e.key==='ArrowUp') rotate();
+});
+
+// Start button
+document.getElementById('startBtn').onclick = function() {
+  resetBoard();
+  current = newTetromino();
+  draw();
+  clearInterval(interval);
+  interval = setInterval(tick, 500);
+};
+</script>
