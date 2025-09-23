@@ -1,0 +1,17 @@
+<!-- HTML -->
+<label for="colorPicker">Pick a color:</label>
+<input type="color" id="colorPicker" />
+<div id="colorPreview" style="margin:20px;height:50px;width:200px;"></div>
+
+<!-- CSS -->
+#colorPreview {
+  border: 2px solid #8b93a7;
+  border-radius: 8px;
+  background: #fff;
+  transition: background 0.3s;
+}
+
+<!-- JS -->
+document.getElementById('colorPicker').addEventListener('input', function(e) {
+  document.getElementById('colorPreview').style.background = e.target.value;
+});
