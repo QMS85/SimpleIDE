@@ -1,0 +1,105 @@
+<!-- Responsive Car Dealership Website Example -->
+
+<!-- HTML -->
+<header>
+  <nav>
+    <div class="logo">AutoOcean</div>
+    <ul>
+      <li><a href="#cars">Cars</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button id="burger">&#9776;</button>
+  </nav>
+</header>
+<main>
+  <section class="hero">
+    <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1200&q=80" alt="Car Showroom" />
+    <h1>Welcome to AutoOcean</h1>
+    <p>Find your dream car today.</p>
+    <a href="#cars" class="cta">Browse Cars</a>
+  </section>
+  <section id="cars">
+    <h2>Featured Cars</h2>
+    <div class="car-list">
+      <div>
+        <img src="https://images.unsplash.com/photo-1511918984145-48de785d4c4e?auto=format&fit=crop&w=400&q=80" alt="Car 1" />
+        <h3>Toyota Corolla</h3>
+        <p>Reliable, fuel-efficient, 2022 model.</p>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=400&q=80" alt="Car 2" />
+        <h3>BMW X5</h3>
+        <p>Luxury SUV, powerful, 2023 model.</p>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1465101178521-1e289f8c8a4b?auto=format&fit=crop&w=400&q=80" alt="Car 3" />
+        <h3>Ford Mustang</h3>
+        <p>Classic muscle, 2021 model.</p>
+      </div>
+    </div>
+  </section>
+  <section id="about">
+    <h2>About Us</h2>
+    <p>AutoOcean is your trusted dealership for new and pre-owned vehicles. We pride ourselves on quality and customer care.</p>
+    <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Team" />
+  </section>
+  <section id="contact">
+    <h2>Contact</h2>
+    <form>
+      <input type="text" placeholder="Name" required />
+      <input type="email" placeholder="Email" required />
+      <textarea placeholder="Message"></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+</main>
+<footer>
+  <p>© 2025 AutoOcean</p>
+</footer>
+
+<!-- CSS -->
+<style>
+body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: #f7fafc; color: #222; }
+header { background: #60a5fa; }
+nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; }
+nav .logo { font-size: 1.6rem; font-weight: bold; color: #fff;}
+nav ul { display: flex; gap: 1.5rem; list-style: none; margin: 0;}
+nav ul li a { color: #fff; text-decoration: none; font-size: 1.1rem;}
+nav #burger { display: none; background: none; border: none; color: #fff; font-size:2rem;}
+main { padding: 1.5rem;}
+.hero { text-align: center; padding: 2rem 0;}
+.hero img { width:100%; max-width:640px; border-radius:18px;}
+.hero h1 { font-size:2.2rem; margin-top:1rem;}
+.hero .cta { display:inline-block; margin:1rem 0; padding:0.7rem 2rem; background:#22c55e; color:#fff; border-radius:10px; text-decoration:none; font-weight:bold;}
+.car-list { display: flex; gap:2rem; flex-wrap:wrap; justify-content:center;}
+.car-list div { background:#fff; border-radius:10px; box-shadow:0 4px 16px rgba(96,165,250,.09); padding:1rem; text-align:center; width:240px;}
+.car-list img { width:100%; border-radius:10px;}
+#about img { width:300px; border-radius:12px; display:block; margin:1.5rem auto;}
+form { display: flex; flex-direction: column; gap: 0.7rem; max-width:320px;}
+form input, form textarea { padding:0.7rem; border-radius:8px; border:1px solid #8b93a7;}
+form button { padding:0.7rem; background:#60a5fa; color:#fff; border:none; border-radius:8px; font-weight:bold;}
+footer { background: #21232c; color:#fff; text-align:center; padding:1.2rem; margin-top:2rem;}
+@media (max-width:900px) {
+  .car-list { flex-direction:column; align-items:center;}
+}
+@media (max-width:600px) {
+  nav ul { display:none; flex-direction:column; position:absolute; top:60px; left:0; background:#60a5fa; width:100%; padding:1rem 0;}
+  nav #burger { display:block;}
+  main { padding:0.4rem;}
+  .car-list div { width:100%; max-width:320px;}
+}
+</style>
+
+<!-- JS -->
+<script>
+const burger = document.getElementById('burger');
+const navLinks = document.querySelector('nav ul');
+burger.addEventListener('click', () => {
+  navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+});
+document.querySelector('form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert('Thanks, we’ll contact you soon!');
+});
+</script>
