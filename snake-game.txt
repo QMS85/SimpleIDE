@@ -1,0 +1,92 @@
+<!-- Responsive Snake Game Example -->
+
+<!-- HTML -->
+<div class="snake">
+  <canvas id="snake-canvas" width="320" height="320"></canvas>
+  <div class="controls">
+    <button id="startBtn">Start</button>
+    <span id="score">Score: 0</span>
+  </div>
+</div>
+
+<!-- CSS -->
+<style>
+body { margin:0; font-family: 'Segoe UI', Arial, sans-serif; background:#181d32; color:#fff;}
+.snake { display:flex; flex-direction:column; align-items:center; margin-top:30px;}
+canvas { background:#222; border-radius:10px; box-shadow:0 4px 16px rgba(96,165,250,.12);}
+.controls { display:flex; gap:1.2rem; align-items:center; margin-top:1rem;}
+#startBtn { padding:0.7rem 2rem; background:#22c55e; color:#fff; border:none; border-radius:10px; font-weight:bold;}
+#score { font-size:1.2rem;}
+@media (max-width: 600px) {
+  .snake { margin-top:10px;}
+  canvas { width:180px !important; height:180px !important;}
+}
+</style>
+
+<!-- JS -->
+<script>
+const canvas = document.getElementById('snake-canvas');
+const ctx = canvas.getContext('2d');
+const SIZE = 20, COUNT = canvas.width / SIZE;
+let snake, dx, dy, food, score = 0, interval, gameOver = false;
+
+function resetGame() {
+  snake = [{x:5, y:5}];
+  dx = 1; dy = 0;
+  score = 0; gameOver = false;
+  document.getElementById('score').textContent = "Score: " + score;
+  spawnFood();
+}
+
+function draw() {
+  ctx.fillStyle = "#222";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = "#60a5fa";
+  snake.forEach(seg => ctx.fillRect(seg.x*SIZE, seg.y*SIZE, SIZE-2, SIZE-2));
+  ctx.fillStyle = "#eab308";
+  ctx.fillRect(food.x*SIZE, food.y*SIZE, SIZE-2, SIZE-2);
+}
+
+function spawnFood() {
+  food = {
+    x: Math.floor(Math.random()*COUNT),
+    y: Math.floor(Math.random()*COUNT)
+  };
+  if(snake.some(seg=>seg.x===food.x && seg.y===food.y)) spawnFood();
+}
+
+function tick() {
+  if(gameOver) return;
+  const head = {x: snake[0].x + dx, y: snake[0].y + dy};
+  if(head.x<0 || head.x>=COUNT || head.y<0 || head.y>=COUNT ||
+     snake.some(seg=>seg.x===head.x && seg.y===head.y)) {
+    gameOver = true; clearInterval(interval);
+    alert('Game Over! Your score: '+score);
+    return;
+  }
+  snake.unshift(head);
+  if(head.x === food.x && head.y === food.y) {
+    score += 10;
+    document.getElementById('score').textContent = "Score: " + score;
+    spawnFood();
+  } else {
+    snake.pop();
+  }
+  draw();
+}
+
+document.addEventListener('keydown', e => {
+  if(gameOver) return;
+  if(e.key==='ArrowLeft' && dx!==1) { dx=-1; dy=0; }
+  if(e.key==='ArrowRight' && dx!==-1) { dx=1; dy=0; }
+  if(e.key==='ArrowUp' && dy!==1) { dx=0; dy=-1; }
+  if(e.key==='ArrowDown' && dy!==-1) { dx=0; dy=1; }
+});
+
+document.getElementById('startBtn').onclick = function() {
+  resetGame();
+  draw();
+  clearInterval(interval);
+  interval = setInterval(tick, 120);
+};
+</script>
