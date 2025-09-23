@@ -1,0 +1,18 @@
+<!-- HTML -->
+<div class="clock"></div>
+
+<!-- CSS -->
+.clock {
+  font-size: 2.5rem;
+  color: #eab308;
+  font-family: monospace;
+  text-align: center;
+  margin-top: 50px;
+}
+
+<!-- JS -->
+function updateClock() {
+  document.querySelector('.clock').textContent = new Date().toLocaleTimeString();
+}
+setInterval(updateClock, 1000);
+updateClock();
