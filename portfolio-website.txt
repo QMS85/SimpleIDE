@@ -1,0 +1,106 @@
+<!-- Responsive Portfolio Website Example -->
+
+<!-- HTML -->
+<header>
+  <div class="profile">
+    <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&w=200&q=80" alt="Profile" />
+    <h1>Jane Doe</h1>
+    <p>Full Stack Developer</p>
+    <div class="social">
+      <a href="https://github.com/" target="_blank"><i class="fa fa-github"></i></a>
+      <a href="https://linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a>
+      <a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="about">
+    <h2>About Me</h2>
+    <p>Passionate developer with experience in web and data science. I love building responsive, scalable apps and contributing to open source.</p>
+    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Desk" />
+  </section>
+  <section class="skills">
+    <h2>Tech Stack & Tools</h2>
+    <div class="dev-icons">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" title="HTML" alt="HTML" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" title="CSS" alt="CSS" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" title="JS" alt="JS" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" title="React" alt="React" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" title="Angular" alt="Angular" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" title="Vue" alt="Vue" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" title="Python" alt="Python" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" title="NodeJS" alt="NodeJS" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" title="TypeScript" alt="TypeScript" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" title="PHP" alt="PHP" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" title=".NET" alt=".NET" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" title="VSCode" alt="VSCode" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" title="GitHub" alt="GitHub" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" title="Jupyter" alt="Jupyter" />
+      <img src="https://replit.com/favicon.ico" title="Replit" alt="Replit" />
+    </div>
+  </section>
+  <section class="projects">
+    <h2>Projects</h2>
+    <div>
+      <h3>Weather Dashboard</h3>
+      <img src="https://images.unsplash.com/photo-1465101178521-1e289f8c8a4b?auto=format&fit=crop&w=400&q=80" alt="Weather App" />
+      <p>Built with React & OpenWeather API. <a href="#">Demo</a></p>
+    </div>
+    <div>
+      <h3>Personal Blog</h3>
+      <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Blog" />
+      <p>Built with Vue.js & Markdown. <a href="#">Demo</a></p>
+    </div>
+  </section>
+  <section class="contact">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Message"></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+</main>
+<footer>
+  <p>© 2025 Jane Doe. Portfolio built with SimpleIDE.</p>
+</footer>
+
+<!-- CSS -->
+<style>
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+body { margin:0; font-family: 'Segoe UI', Arial, sans-serif; background:#f8fafc; color: #21232c; }
+header { background: #22c55e; color:#fff; text-align:center; padding:2rem 0;}
+header .profile img { width: 120px; border-radius:50%; border:4px solid #fff;}
+header .profile h1 { margin: 0.7rem 0 0.3rem;}
+header .profile p { font-size:1.2rem;}
+header .social a { color:#fff; margin:0 0.5rem; font-size:1.5rem;}
+main { padding:1.5rem; max-width:860px; margin:auto;}
+.about img { width:100%; max-width:400px; border-radius:12px; display:block; margin:1rem auto;}
+.skills .dev-icons { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; padding: 1rem 0;}
+.skills .dev-icons img { width:48px; height:48px; }
+.projects { display: flex; gap:2rem; flex-wrap:wrap; justify-content:center; }
+.projects div { background:#fff; border-radius:12px; box-shadow:0 4px 16px rgba(34,197,94,.09); padding:1rem; text-align:center; width:260px;}
+.projects img { width:100%; border-radius:10px;}
+form { display: flex; flex-direction: column; gap: 0.8rem; max-width:320px; }
+form input, form textarea { padding:0.7rem; border-radius:8px; border:1px solid #8b93a7;}
+form button { padding:0.7rem; background:#22c55e; color:#fff; border:none; border-radius:8px; font-weight:bold;}
+footer { background: #21232c; color: #fff; text-align:center; padding:1.2rem; margin-top:2rem;}
+@media (max-width: 950px) {
+  .projects { flex-direction:column; align-items:center;}
+  .projects div { width:100%; max-width:340px;}
+}
+@media (max-width: 600px) {
+  main { padding: 0.5rem;}
+  header { padding:1rem 0;}
+  .skills .dev-icons img { width:36px; height:36px;}
+}
+</style>
+
+<!-- JS -->
+<script>
+document.querySelector('form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert('Thanks for reaching out!');
+});
+</script>
