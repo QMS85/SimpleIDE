@@ -1,0 +1,36 @@
+<!-- HTML -->
+<input id="todoInput" type="text" placeholder="Add a task..." />
+<button id="addBtn">Add</button>
+<ul id="todoList"></ul>
+
+<!-- CSS -->
+#todoInput {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #8b93a7;
+  margin-right: 8px;
+}
+#addBtn {
+  padding: 8px 14px;
+  border: none;
+  background: #22c55e;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: bold;
+}
+#todoList {
+  margin-top: 12px;
+  color: #e9ecf1;
+}
+
+<!-- JS -->
+document.getElementById('addBtn').onclick = function() {
+  const input = document.getElementById('todoInput');
+  const value = input.value.trim();
+  if (value) {
+    const li = document.createElement('li');
+    li.textContent = value;
+    document.getElementById('todoList').appendChild(li);
+    input.value = '';
+  }
+};
