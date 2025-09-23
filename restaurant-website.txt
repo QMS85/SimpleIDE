@@ -1,0 +1,82 @@
+<!-- Responsive Restaurant Website Example -->
+
+<!-- HTML -->
+<header>
+  <nav>
+    <div class="logo">OceanBite</div>
+    <ul class="nav-links">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="social">
+      <a href="https://instagram.com/" target="_blank"><i class="fa fa-instagram"></i></a>
+      <a href="https://facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a>
+      <a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a>
+      <a href="https://linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a>
+      <a href="https://wa.me/" target="_blank"><i class="fa fa-whatsapp"></i></a>
+    </div>
+    <button id="burger">&#9776;</button>
+  </nav>
+</header>
+<main>
+  <section class="hero">
+    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80" alt="Restaurant" />
+    <h1>Welcome to OceanBite</h1>
+    <p>Delicious food, warm atmosphere, great times.</p>
+    <a href="#menu" class="cta">View Menu</a>
+  </section>
+  <section id="menu">
+    <h2>Menu Highlights</h2>
+    <div class="menu-items">
+      <div>
+        <img src="https://images.unsplash.com/photo-1519864602325-2b50c0c1b8e9?auto=format&fit=crop&w=400&q=80" alt="Pasta" />
+        <h3>Seafood Pasta</h3>
+        <p>Freshly caught seafood with homemade pasta.</p>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0723cdd?auto=format&fit=crop&w=400&q=80" alt="Salad" />
+        <h3>Garden Salad</h3>
+        <p>Crisp greens, cherry tomatoes, house dressing.</p>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80" alt="Dessert" />
+        <h3>Tropical Dessert</h3>
+        <p>Mango, coconut, passionfruit, chef's secret.</p>
+      </div>
+    </div>
+  </section>
+  <section id="about">
+    <h2>About Us</h2>
+    <p>OceanBite is a family-owned restaurant focused on fresh, local ingredients and friendly service.</p>
+    <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Team" />
+  </section>
+  <section id="contact">
+    <h2>Contact & Location</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Message"></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <p>123 Beach Road, Cape Town</p>
+  </section>
+</main>
+<footer>
+  <p>© 2025 OceanBite | Find us on social media!</p>
+  <div class="social">
+    <a href="https://instagram.com/" target="_blank"><i class="fa fa-instagram"></i></a>
+    <a href="https://facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a>
+    <a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a>
+    <a href="https://linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a>
+    <a href="https://wa.me/" target="_blank"><i class="fa fa-whatsapp"></i></a>
+  </div>
+</footer>
+
+<!-- CSS -->
+<style>
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: #f7fafc; color: #21232c;}
+header { background: #60*
+
